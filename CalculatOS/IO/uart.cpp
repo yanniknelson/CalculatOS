@@ -36,7 +36,7 @@ char uart1_getChar()
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-void uart1_sendChar(const unsigned  char c)
+void uart1_sendChar(const char c)
 {
 	do { asm volatile("nop"); } while (!(*AUX_MU_LSR_REG & 0x20)); // do nothing until bit 6 is set (transmitter idle)
 	*AUX_MU_IO_REG = c; // set the send data

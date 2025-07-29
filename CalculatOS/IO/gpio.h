@@ -1,6 +1,8 @@
 
 #pragma once
 
+#include "../stdx_includes.h"
+
 // 
 // pins is a 64 bit vector, bit 0 = pin 0 etc... bits past bit 53 will be ignored
 // 
@@ -10,7 +12,7 @@
 //	This function will take at least 300 cycles, so try to set all the pins at once
 // 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-void SetPullUpDown(const unsigned long pins, const unsigned char enabledState);
+void SetPullUpDown(const uint64_t pins, const uint8_t enabledState);
 
 // 
 //	pin the pin we're enabling
@@ -18,4 +20,4 @@ void SetPullUpDown(const unsigned long pins, const unsigned char enabledState);
 //	altFunc values 0 - 5 for alt0 - alt5, 6 = input, 7 = output, other values will have no effect
 // 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-void SetPinAltFunc(unsigned char pin, const unsigned char altFunc);
+void SetPinAltFunc(const uint8_t pin, const uint8_t altFunc);
