@@ -88,7 +88,7 @@ void SetPinAltFunc(const uint8_t pin, const uint8_t altFunc)
 		localPin -= 50;
 	}
 
-	char altFuncBits = 0;
+	uint8_t altFuncBits = 0;
 	switch (altFunc)
 	{
 	case 0:
