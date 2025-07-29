@@ -1,21 +1,21 @@
 
 # Collect all the source files
-SRCS = $(wildcard */*.c) $(wildcard *.c)
+SRCS = $(wildcard */*.cpp) $(wildcard *.cpp)
 # Take all the files in SRC and replace the .c with a .o to refer to their generated object files
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:.cpp=.o)
 # src compile flags, importantly no standard library
-CFLAGS = -Wall -O2 -ffreestanding -nostdinc -nostdlib -nostartfiles
+CFLAGS = -Wall -Wextra -O2 -ffreestanding -fno-rtti -fno-exceptions -nostdlib -nostartfiles
 
 # require the the clean command be run and then the kernel8.img is generated
 all: full-clean kernel8.img
 
 # requires start.S exist. Generates start.o
 start.o: start.S
-	aarch64-elf-gcc $(CFLAGS) -c start.S -o start.o
+	aarch64-elf-g++ $(CFLAGS) -c start.S -o start.o
 
 # requires all of the .c files. Generates all of the object files for all of the sources
-%.o: %.c
-	aarch64-elf-gcc $(CFLAGS) -c $< -o $@
+%.o: %.cpp
+	aarch64-elf-g++ $(CFLAGS) -c $< -o $@
 
 # requires start.o and all of the object files. Links everything into kernel8.elf and then produces kernel8.img
 kernel8.img: start.o $(OBJS)

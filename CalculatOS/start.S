@@ -22,5 +22,5 @@ _start:
     sub     w2, w2, #1                    // subtract 1 (byte) from the size count
     cbnz    w2, 3b                        // if the bss has not been filled with 0s then jump to label 3 otherwise continue onwards (2b means label 3, look backwards)
 
-4:  bl      main                          // jump to C code, should not return
+4:  bl      main                          // jump to C++ code, should not return
     b       1b                            // jump to label 1 (wait for event). Takes it to the infinite do nothing loop
